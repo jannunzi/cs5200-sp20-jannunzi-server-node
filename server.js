@@ -1,6 +1,8 @@
 // load express library to create HTTP server
 var express = require('express')
 var app = express()
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost:27017/whiteboard-cs5200-sp20')
 
 // load body parser library to parse JSON from HTTP BODY
 var bodyParser = require('body-parser')
@@ -17,6 +19,8 @@ app.use(function (req,res, next) {
     next();
 });
 
+require('./controllers/quizzes.controllers.server')(app)
+
 // start server listening at port 3000 for HTTP requests
-app.listen(3000)
+app.listen(4000)
 

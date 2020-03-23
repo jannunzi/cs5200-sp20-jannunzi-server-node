@@ -1,4 +1,5 @@
 const enrollmentModel = require('../models/enrollments/enrollments.model.server')
+
 const enrollStudentInSection = (
     studentId, sectionId
 ) => enrollmentModel.create({
