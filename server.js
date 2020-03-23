@@ -2,7 +2,9 @@
 var express = require('express')
 var app = express()
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/whiteboard-cs5200-sp20')
+mongoose.connect(
+    'mongodb://localhost:27017/whiteboard-cs5200-sp20',
+    { useNewUrlParser: true, useUnifiedTopology: true })
 
 // load body parser library to parse JSON from HTTP BODY
 var bodyParser = require('body-parser')
@@ -20,6 +22,7 @@ app.use(function (req,res, next) {
 });
 
 require('./controllers/quizzes.controllers.server')(app)
+require('./controllers/questions.controller.server')(app)
 
 // start server listening at port 3000 for HTTP requests
 app.listen(4000)
